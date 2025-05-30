@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import SocialLinks from "../../Context/Social";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Userlinks = () => {
   const { socialLink, setSocialLink } = useContext(SocialLinks);
@@ -26,8 +27,14 @@ const Userlinks = () => {
       twitterLink,
     });
 
-    alert("Social links updated successfully!");
-    navigate("/dashboard");
+    Swal.fire({
+      icon: "success",
+      title: "Social links updated successfully!",
+      showConfirmButton: false,
+      timer: 1500,
+    }).then(() => {
+      navigate("/dashboard");
+    });
   };
 
   const isSubmitDisabled = !linkdinLink && !githubLink && !twitterLink;
