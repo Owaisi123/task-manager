@@ -32,7 +32,7 @@ export default function TaskManagerNavbar() {
 
             <Link
               to="/signup"
-              className="ml-6 bg-green-500 px-3 py-1 rounded hover:bg-green-600"
+              className="ml-6 bg-blue-500 px-3 py-1 rounded hover:bg-blue-600"
             >
               Sign Up
             </Link>

@@ -62,15 +62,27 @@ const Login = () => {
   };
 
   const handleLogout = () => {
-    setGetUserName("");
-    localStorage.removeItem("user");
-    localStorage.removeItem("email");
-    setLogout(true);
     Swal.fire({
-      icon: "info",
-      title: "Logout Successful",
-      timer: 1500,
-      showConfirmButton: false,
+      title: "Are you sure you want to logout?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, logout",
+      cancelButtonText: "Cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setGetUserName("");
+        setGetUserEmail("");
+        localStorage.removeItem("user");
+        localStorage.removeItem("email");
+        setLogout(true);
+        Swal.fire({
+          icon: "success",
+          title: "Logged out",
+          text: "You have been logged out successfully.",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      }
     });
   };
 
