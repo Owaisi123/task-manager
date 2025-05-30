@@ -61,30 +61,35 @@ const Login = () => {
     }
   };
 
-  const handleLogout = () => {
-    Swal.fire({
-      title: "Are you sure you want to logout?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Yes, logout",
-      cancelButtonText: "Cancel",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        setGetUserName("");
-        setGetUserEmail("");
-        localStorage.removeItem("user");
-        localStorage.removeItem("email");
-        setLogout(true);
-        Swal.fire({
-          icon: "success",
-          title: "Logged out",
-          text: "You have been logged out successfully.",
-          timer: 1500,
-          showConfirmButton: false,
-        });
-      }
-    });
-  };
+  
+const handleLogout = () => {
+  Swal.fire({
+    title: "Are you sure you want to logout?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes, logout",
+    cancelButtonText: "Cancel",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      setGetUserName("");
+      setGetUserEmail("");
+      localStorage.removeItem("user");
+      localStorage.removeItem("email");
+      setLogout(true);
+
+      Swal.fire({
+        icon: "success",
+        title: "Logged out",
+        text: "You have been logged out successfully.",
+        timer: 1500,
+        showConfirmButton: false,
+      }).then(() => {
+        navigate("/signup");
+      });
+    }
+  });
+};
+
 
   return (
     <div className="flex items-center justify-center py-10 px-4">
