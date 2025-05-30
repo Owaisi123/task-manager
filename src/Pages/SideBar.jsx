@@ -1,32 +1,36 @@
 import React, { useRef, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserAuth from "../Context/UserAuth";
 import Swal from "sweetalert2";
 
 function Sidebar({ isOpen, setIsSidebarOpen }) {
   const sidebarRef = useRef();
   const { getUserName, logoutUser } = useContext(UserAuth);
+  const navigate = useNavigate()
 
-  const handleLogout = () => {
-    Swal.fire({
-      title: "Are you sure you want to logout?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Yes, logout",
-      cancelButtonText: "Cancel",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        logoutUser();
-        Swal.fire({
-          icon: "success",
-          title: "Logged out",
-          text: "You have been logged out successfully.",
-          timer: 1500,
-          showConfirmButton: false,
-        });
-      }
-    });
-  };
+const handleLogout = () => {
+  Swal.fire({
+    title: "Are you sure you want to logout?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes, logout",
+    cancelButtonText: "Cancel",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      logoutUser();
+      Swal.fire({
+        icon: "success",
+        title: "Logged out",
+        text: "You have been logged out successfully.",
+        timer: 1500,
+        showConfirmButton: false,
+      }).then(() => {
+        navigate("/signup");
+      });
+    }
+  });
+};
+
 
   return (
     <>
