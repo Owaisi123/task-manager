@@ -19,7 +19,7 @@ function Sidebar({ isOpen, setIsSidebarOpen }) {
       {/* Sidebar */}
       <div
         ref={sidebarRef}
-        onClick={(e) => e.stopPropagation()} // prevent closing on inner click
+        onClick={(e) => e.stopPropagation()} 
         className={`${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } fixed md:relative top-0 left-0 h-full w-64 bg-indigo-700 text-white transform transition-transform duration-300 ease-in-out z-40 md:translate-x-0`}
@@ -35,6 +35,7 @@ function Sidebar({ isOpen, setIsSidebarOpen }) {
             { label: "Profile", to: "/profile" },
             { label: "Login", to: "/login" },
             { label: "Sign Up", to: "/signup" },
+            { label: "Add Links", to: "/userlinks" },
           ].map(({ label, to }) => (
             <Link
               key={label}

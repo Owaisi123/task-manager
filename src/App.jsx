@@ -12,6 +12,7 @@ import Dashboard from "./Components/Dashboard/Dashboard";
 import Userlinks from "./Components/SocialLinks/SocialLinks";
 import Swal from "sweetalert2";
 import './App.css'
+import NotFoundPage from "./Components/NotFound/NotFound";
 
 const App = () => {
   const [tasks, setTasks] = useState(() => {
@@ -136,7 +137,7 @@ const App = () => {
 
             <Route
               path="*"
-              element={<h1 className="text-2xl">404 - Page not found</h1>}
+              element={<NotFoundPage/>}
             />
           </Routes>
         </main>
